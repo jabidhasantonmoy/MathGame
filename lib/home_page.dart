@@ -9,6 +9,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // number pad
+  List<String> numberPad = [
+    '7',
+    '8',
+    '9',
+    'C',
+    '4',
+    '5',
+    '6',
+    'DEL',
+    '1',
+    '2',
+    '3',
+    '=',
+    '0',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +51,28 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             flex: 2,
             child: Container(
-              color: const Color(0xff62fc86),
+              child: GridView.builder(
+                itemCount: numberPad.length,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                ),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(7.0),
+                    child: Container(
+                      color: Colors.deepPurple,
+                      child: Center(
+                        child: Text(
+                          numberPad[index],
+                          style: whiteTextStyle,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              //color: const Color(0xff62fc86),
             ),
           ),
         ],
